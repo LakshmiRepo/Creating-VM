@@ -12,19 +12,18 @@ data "azurerm_resource_group" "VMResource" {
 
 }
 data "azurerm_subnet" "VMSubnet" {
-  name                 = "Subnet1"
+  name                 = "default"
   resource_group_name  = "rgforvn"
-  virtual_network_name = "VNet1"
+  virtual_network_name = "vnet3"
 }
 
 module "VM" {
-  source = "../ModuleDataSourceVM"
-  rgname = data.azurerm_resource_group.VMResource.name
-  VMName = "DatasourceVM"
-  size = "Standard_B16ms"
-  subnetid = data.azurerm_subnet.VMSubnet.id
-  adminpwd = var.adminpw
+  source         = "../ModuleDataSourceVM"
+  rgname         = data.azurerm_resource_group.VMResource.name
+  VMName         = "DatasourceVM"
+  size           = "Standard_B1s"
+  subnetid       = data.azurerm_subnet.VMSubnet.id
+  adminpwd       = var.adminpw
   localadminname = var.localadmin
-  location = data.azurerm_resource_group.VMResource.location
-
+  location       = "WestUS"
 }
