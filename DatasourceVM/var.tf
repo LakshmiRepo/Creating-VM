@@ -5,7 +5,7 @@ variable "adminpw" {
 }
 variable "localadmin" {
   type = string
-  default = "ladandamudi@gmail.com"
+  default = "ladandamudi"
   description = "The local admin name"
 }
 
