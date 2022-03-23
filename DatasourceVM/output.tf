@@ -6,5 +6,10 @@ output "VM_id" {
 
 output "VM_ip" {
   value       = module.VM.VM_ip_out
-  description = "The private IP address for the new VResource"
+  description = "The private IP address for the new VM"
 }
+
+/* password to VM
+
+  Enter a value: sateesh1@danda
+*/
