@@ -1,4 +1,5 @@
 
+
 resource "azurerm_network_interface" "VMNetworkInterface" {
   location            = var.location
   name                = "${var.VMName}NI"
@@ -13,7 +14,7 @@ resource "azurerm_network_interface" "VMNetworkInterface" {
 resource "azurerm_windows_virtual_machine" "VM" {
   admin_password        = var.adminpwd
   admin_username        = var.localadminname
-  location              = "East US"
+  location              = var.location
   name                  = var.VMName
   network_interface_ids = [
     azurerm_network_interface.VMNetworkInterface.id
@@ -26,12 +27,9 @@ resource "azurerm_windows_virtual_machine" "VM" {
     sku       = "2016-Datacenter"
     version   = "latest"
   }
-
- 
   os_disk {
     caching              = "ReadOnly"
     storage_account_type = "Standard_LRS"
   }
 }
-
-
+  
